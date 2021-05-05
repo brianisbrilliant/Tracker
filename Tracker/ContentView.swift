@@ -8,29 +8,83 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var orders = [Order]()
+    @State private var expenses = [Expense]()
+    
+    let quotes = [
+        "Why don't you make like a tree, and get outta here.",
+        "An Apple a day keeps the doctor away",
+        "Be Kind, Rewind"
+    ]
+    
+    let authors = [
+        "Biff Tanner",
+        "Doctors, probably",
+        "Your VCR"
+    ]
+    
+    let userCalendar = Calendar.current
+    var now: Date {
+        let temp = Date()
+        
+        return temp
+    }
+    let formatter = DateFormatter()
+//    formatter.dateStyle = .medium
+    
     var body: some View {
-        HStack{
-            Text("Mood")
-                .font(.title)
-                .fontWeight(.bold)
-            Button(action: {
+        NavigationView {
+            VStack {
+                Text("Today is \(now)")
+                Spacer()
                 
-            }){
-                Text("😀")
-                    .font(.largeTitle)
-            }
-            Button(action: {
+                Text("'\(quotes[0])' \n -  \(authors[0])")
+                    .italic()
+                    .padding(40)
                 
-            }){
-                Text("😐")
-                    .font(.largeTitle)
-            }
-            Button(action: {
+                Spacer()
                 
-            }){
-                Text("☹️")
-                    .font(.largeTitle)
+                VStack {
+                    Text("How do you feel today?")
+                        .padding(1)
+                    HStack {
+                        Button(action: {}){
+                            Text("🥳 ")
+                                .font(.largeTitle)
+                        }
+                        Button(action: {}){
+                            Text("🙂 ")
+                                .font(.largeTitle)
+                        }
+                        Button(action: {}){
+                            Text("😞 ")
+                                .font(.largeTitle)
+                        }
+                        Button(action: {}){
+                            Text("😡")
+                                .font(.largeTitle)
+                        }
+                    }
+                }
+                .padding()
+                
+                HStack {
+                    
+                    NavigationLink(destination: OrdersView()) {
+                        Text("Orders")
+                    }
+                    
+                    
+                    
+                    Spacer()
+                    NavigationLink(destination: ExpensesView()) {
+                        Text("Expenses")
+                    }
+                    
+                }
+                .padding()
             }
+            .navigationBarTitle("Tracker")
         }
     }
 }
