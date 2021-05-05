@@ -72,14 +72,24 @@ struct ContentView: View {
                     
                     NavigationLink(destination: OrdersView()) {
                         Text("Orders")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     }
+                    .padding(10)
+                    .background(Color.green)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                     
                     
                     
                     Spacer()
                     NavigationLink(destination: ExpensesView(expenses: self.expenses)) {
                         Text("Expenses")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     }
+                    .padding(10)
+                    .background(Color.red)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                     
                 }
                 .padding()
