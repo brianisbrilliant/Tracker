@@ -1,5 +1,5 @@
 //
-//  Orders.swift
+//  OrdersView.swift
 //  Tracker
 //
 //  Created by Professor Foster on 5/5/21.
@@ -13,11 +13,10 @@ struct OrdersView: View {
             Text("Orders")
         }
         .navigationBarTitle("Orders")
-        
     }
 }
 
-struct Orders_Previews: PreviewProvider {
+struct OrdersView_Previews: PreviewProvider {
     static var previews: some View {
         OrdersView()
     }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var orders = [Order]()
-    @State private var expenses = [Expense]()
+    @ObservedObject var expenses = Expenses()
+    @ObservedObject var orders = Orders()
     
     let quotes = [
         "Why don't you make like a tree, and get outta here.",
@@ -77,7 +77,7 @@ struct ContentView: View {
                     
                     
                     Spacer()
-                    NavigationLink(destination: ExpensesView()) {
+                    NavigationLink(destination: ExpensesView(expenses: self.expenses)) {
                         Text("Expenses")
                     }
                     

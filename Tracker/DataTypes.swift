@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Expense {
+struct Expense: Identifiable {
     enum ExpenseCategories {
         // raw values start at 0 and increment by 1
         case travel         // 0
@@ -16,14 +16,20 @@ struct Expense {
         case tools          // 3
     }
     
+    let id = UUID()
     let name: String
     let amount: Double
     let category: ExpenseCategories
     
 }
 
-struct Order {
-    let orderNumber: Int
+class Expenses: ObservableObject {
+    // an array of Expense variables
+    @Published var items = [Expense]()
+}
+
+struct Order: Identifiable {
+    let id: Int     // previously named: orderNumber
     let clientName: String
     let clientPhoneNumber: Int
     let descriptionOfWork: String
@@ -33,6 +39,11 @@ struct Order {
     let delivered: Bool
     let invoiceSent: Bool
     let paymentReceived: Bool
+}
+
+class Orders: ObservableObject {
+    // an array of Order variables.
+    @Published var items = [Order]()
 }
 
 struct Mood {
